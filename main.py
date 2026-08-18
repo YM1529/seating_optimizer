@@ -1,3 +1,13 @@
+import gspread
+from google.colab import auth
+from google.auth import default
+import pandas as pd
+import numpy as np
+import random
+import math
+import time
+import matplotlib.pyplot as plt
+
 # ==========================================
 # 席替え最適化クラス (SeatingOptimizer) - 固定席ペアのコスト除外対応版
 # ==========================================
