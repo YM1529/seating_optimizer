@@ -1,5 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import numpy as np
 from main import SeatingOptimizer
 
 # ページの設定
@@ -52,7 +53,8 @@ if st.button("最適化を実行", type="primary"):
             ax2.set_ylabel('Bias Prob')
             ax2.grid(True)
 
-            st.pyplot(fig)
+            st.pyplot(fig, use_container_width=True)
+            plt.close(fig)  # メモリ開放
 
             # 重複レポートの表示
             st.subheader("重複ペア分析")
