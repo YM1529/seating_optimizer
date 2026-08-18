@@ -1,5 +1,4 @@
 import gspread
-from google.colab import auth
 from google.auth import default
 import pandas as pd
 import numpy as np
