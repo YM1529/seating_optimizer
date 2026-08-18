@@ -22,7 +22,10 @@ class SeatingOptimizer:
         self.output_sheet_name = output_sheet
         self.fixed_sheet_name = fixed_sheet
         
-        self.sh = gc.open_by_url(self.url)
+        # --- Google認証とgspreadクライアントの取得（修正箇所） ---
+        credentials, _ = default(scopes=['https://www.googleapis.com/auth/spreadsheets'])
+        self.gc = gspread.authorize(credentials)
+        self.sh = self.gc.open_by_url(self.url)
         
         # 内部状態・属性の初期化
         self.seat_positions = {}
@@ -295,7 +298,7 @@ class SeatingOptimizer:
             initial_temp = min(initial_temp, 2.0)
             warmup_steps = int(warmup_steps * 0.3)
 
-        print(f"最適化が開始されました ({'継続最適化' if use_current_as_initial else 'リセット・再最適化'})  初期コスト総計: {self.current_cost:.2f}")
+        print(f"最適化が開始されました ({'継続最適化' if use_current_as_initial else 'リセット・再最適化'}) 初期コスト総計: {self.current_cost:.2f}")
         start_time = time.time()
 
         for step in range(iterations):
