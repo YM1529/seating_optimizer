@@ -1,6 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-from seating_optimizer import SeatingOptimizer
+from main import SeatingOptimizer
 
 # ページの設定
 st.set_page_config(page_title="席替え最適化ツール", layout="wide")
